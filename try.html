@@ -1,0 +1,290 @@
+<html>
+  <head>
+    <title>H517 Project 1</title>
+    <style>
+        body {
+            font-size: 20px;
+        }
+
+       text{
+            font-size: 15px;
+       }
+       .axis path, .axis line {
+            fill: none;
+            stroke: black;
+            shape-rendering: crispEdges;
+       }
+       .tick text {
+          fille: black;
+          font-size: 13px;
+       }
+
+    </style>
+  </head>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+  <body>
+     
+      
+      <script type="text/javascript">
+
+        var xScale = d3.scale.linear();
+        var yScale = d3.scale.linear();
+
+        xScale.domain([0,20]).range([0, 800]);
+        yScale.domain([20,0]).range( [0,800]);
+
+        var xScale2 = d3.scale.ordinal();
+        var yScale2 = d3.scale.linear();
+
+        var	valueline = d3.svg.line()
+        .x(function(d) { return xScale(d.x); })
+        .y(function(d) { return yScale(d.y); });
+
+        var xAxis = d3.svg.axis()
+            .scale(xScale2)
+            .orient("bottom")
+
+        var g = d3.select("body")
+            .append("svg")
+            .attr("id","main")
+            .attr("width", "1000")
+            .attr("height", "800")
+
+        var v = d3.select("body")
+            .append("svg")
+            .attr("width", "1000")
+            .attr("height", "350")
+
+
+
+
+        d3.json("data/streets.json", function(streets) {
+            console.log(streets);
+
+                g.selectAll(".line")
+                .data(streets)
+                .enter().append("path")
+                .style('fill', 'none')
+                .style('stroke', 'black')
+                .style('stroke-width', '2px')
+                .attr("class", "map")
+                .attr("d", valueline)
+
+                g.append("text")
+                 .attr('x',470)
+                 .attr('y',135)
+                 .attr('font-size',150)
+                 .style('text-anchor', 'start')
+        .attr('transform', 'rotate(75 190 30)')
+        .attr('font-weight','bold')
+     
+                 .text("CEORCE STREET");
+
+                 g.append("text")
+                 .attr('x',540)
+                 .attr('y',-10)
+                 .attr('font-size',150)
+                 .style('text-anchor', 'start')
+        .attr('transform', 'rotate(75 198 20)')
+        .attr('font-weight','bold')
+     
+                 .text("RECENT STREET");
+
+                 g.append("text")
+                 .attr('x',405)
+                 .attr('y',270)
+                 .style('font-size',20)
+                 .style('text-anchor', 'start')
+                 .attr('transform', 'rotate(1 1 1)')
+                 .attr('fill','darkgreen')
+                 .attr('stroke-width','none')
+                 .attr('font-weight','bold')
+
+     
+                 .text("WORKHOUSE");
+
+                  g.append("text")
+                 .attr('x',560)
+                 .attr('y',-250)
+                 .style('font-size',17)
+                 .style('text-anchor', 'start')
+            .attr('transform', 'rotate(75 190 20)')
+                 .attr('fill','Purple')
+                 .attr('stroke-width','none')
+                 .attr('font-weight','bold')
+
+     
+                 .text("BREWERY");
+
+                  g.append("text")
+                 .attr('x',400)
+                 .attr('y',110)
+                 .attr('font-size',150)
+                 .style('text-anchor', 'start')
+            .attr('transform', 'rotate(1 10 -10)')
+                 // .attr('fill','Purple')
+                 // .attr('stroke-width','none')
+                 .attr('font-weight','bold')
+
+     
+                 .text("OXFORD STREET");
+
+                  g.append("text")
+                 .attr('x',210)
+                 .attr('y',635)
+                 .attr('font-size',150)
+                 .style('text-anchor', 'start')
+            .attr('transform', 'rotate(-25 120 -10)')
+                 // .attr('fill','Purple')
+                 // .attr('stroke-width','none')
+                 .attr('font-weight','bold')
+
+     
+                 .text("BREWER STREET");
+
+                  g.append("text")
+                 .attr('x',430)
+                 .attr('y',590)
+                 .style('font-size',17)
+                 .style('text-anchor', 'start')
+            .attr('transform', 'rotate(1 1 1)')
+                 .attr('fill','Orange')
+                 .attr('font-weight','bold')
+                 // .attr('stroke-width','none')
+
+     
+                 .text("RECENTS QUADRANT");
+
+                 g.append("text")
+                 .attr('x',400)
+                 .attr('y',-450)
+                 .style('font-size',18)
+                 .style('text-anchor', 'start')
+                 .attr('transform', 'rotate(75 190 20)')
+                 .attr('fill','red')
+                 .attr('stroke-width','none')
+                 .attr('font-weight','bold')
+
+     
+                 .text("SOHO SQUARE");
+
+        });
+
+        d3.csv("data/pumps.csv", function(pumps) {
+          console.log(pumps);
+
+              g.selectAll("circle")
+                .data(pumps)
+                .enter()
+                .append("circle")
+                .style('fill', 'blue')
+                .attr("r", 10)
+                .attr("cx", function (d) {return xScale(d.x); })
+                .attr("cy", function (d) {return yScale(d.y); })
+        });
+
+        d3.csv("data/deaths_age_sex.csv", function(deathlocations) {
+          console.log(deathlocations);
+
+              g.selectAll("circle")
+                .data(deathlocations)
+                .enter()
+                .append("circle")
+                .style('fill', 'red')
+                .attr("r", 5)
+                .attr("cx", function (d) {return xScale(d.x); })
+                .attr("cy", function (d) {return yScale(d.y); })
+                .attr('class',"death_dots")
+        });
+
+
+        function updateChart(total_death){
+            d3.csv("data/deaths_age_sex.csv", function(deathlocations) {
+                console.log(deathlocations.slice(0,total_death))
+                new_loc = deathlocations.slice(0,total_death)
+                g.selectAll("circle")
+                    .data(new_loc)
+                    .enter()
+                    .append("circle")
+                    .style('fill', 'red')
+                    .attr("r", 5)
+                    .attr("cx", function (d) {return xScale(d.x); })
+                    .attr("cy", function (d) {return yScale(d.y); })
+                    .attr('class',"death_dots")
+
+            })
+        }
+
+        d3.csv("deathdays.csv", function(deathsperday) {
+          console.log(deathsperday);
+
+              xScale2.domain(deathsperday.map(function(d) { return d.date; }))
+                  .rangeRoundBands([0, 1000], 0.1);
+              yScale2.domain([0, 143]).range([0, 350]);
+
+              deathsperday.forEach(function(d) {
+                  d.deaths = +d.deaths;
+              });
+
+              v.selectAll("rect")
+                .data(deathsperday)
+                .enter()
+                .append("rect")
+                .style('fill', 'red')
+                .attr("x", function(d) {
+                    return xScale2(d.date);
+                })
+                .attr("y", function(d) {
+                    return 300 - yScale2(d.deaths);
+                })
+                .attr("width", 20)
+                .attr("height", function (d) {
+                  return yScale2(d.deaths);
+                })
+                .on("click", function(d,i) {
+
+                    d3.selectAll(".death_dots").remove()
+                    console.log(i)
+                    bar_index = i
+                    selectedDates=deathsperday.filter(function(d,i){return i <= bar_index})
+                    var totalDead=d3.sum(selectedDates, d=>d.deaths)
+                    console.log(totalDead)
+                    updateChart(totalDead)
+
+                })
+                .append("title")
+                .text(function(d) {
+                  return d.deaths + " deaths";
+                })
+
+
+
+
+            var graphTotalDeaths = d3.svg.line()
+              .x(function(d) {return xScale2(d.date); })
+              .y(function(d) {return yScale2(d.deaths); });
+
+
+                v.append("g")
+                  .attr("class", "axis")
+                  .attr("transform", "translate(0," + 300 + ")")
+                  .call(xAxis)
+                  .selectAll("text")
+                  .attr("y", 0)
+                  .attr("x", 9)
+                  .attr("dy", ".35em")
+                  .attr("transform", "rotate(90)")
+                  .style("text-anchor", "start");
+
+              v.append("text")
+                  .attr("x", 10)
+                  .attr("y", 20)
+                  .style("font-size", "16px")
+                  .text("Deaths per Day");
+
+        });
+
+      </script>
+
+  </body>
+</html>

@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+/* General Styling */
+html,
+body {
+  font-family: "Poppins", sans-serif;
+}
+a {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+a:hover {
+  color: blue;
+}
+.charContents {
+  display: inline;
+}
+body {
+  width: 95%;
+  margin: 50px auto;
+}
+.charContents {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 50px;
+  justify-content: space-between;
+  align-items: center;
+}
+.charContents svg:nth-child(2) {
+  display: none;
+}
+/*.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}*/
+/* Bar Chart Styles */
+.bar {
+  fill: black;
+}
+
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.changeBar {
+  fill: red;
+}
+
+    svg .street {
+      stroke: black;
+      stroke-width: 1px;
+      fill: none;
+    }
+    
+    svg .mapLabel {
+      font-family: sans-serif;
+      fill: gray;
+    }
+    
+    svg .pump {
+      fill: black;
+      stroke: none;
+    }
+    
+    svg .death {
+      stroke: none;
+      r: 2;
+    }
+    
+    svg .graphline {
+      fill: blue;
+      stroke-width: 3px;
+    }
+    
+    svg .deathhoverbar:hover {
+      fill-opacity: .1;
+    }
+    
+    svg .graphbutton {
+      rx: 80;
+      ry: 80;
+      stroke: none;
+    }
+    
+    svg .graphbuttonlabel {
+      font-family: 'sans-serif';
+      font-size: 15px;
+    }
+    
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: gray;
+      shape-rendering: crispEdges;
+    }
+
+    .axis text {
+      font-family: sans-serif;
+      font-size: 10px;
+      fill: green;
+    }
+/* Pie Chart Styles */
+.arc text {
+  font: 15px sans-serif;
+  text-anchor: middle;
+}
+
+.arc path {
+  stroke: rgb(255, 255, 255);
+}
+
+.title {
+  fill: rgb(23, 0, 128);
+  font-weight: bold;
+}
+
+.clickme {
+    background-color: #EEEEEE;
+    padding: 8px 20px;
+    text-decoration:none;
+    font-weight:bold;
+    border-radius:5px;
+    color: #10a2ff;
+    cursor:pointer;
+}
+
+.left-btn { float: left;
+        background-color: linear-gradient(#FFFFFF, rgb(255, 122, 89));
+ }
+.right-btn { float: right; }
+.top { background-color: rgb(255, 122, 89); }
+.danger {
+    background-color:#FF0040;
+    color: #FFFFFF;
+}
+
+.danger:hover {
+    background-color:#EB003B;
+    color: #FFFFFF;
+}
+/* Map Chart Styles */
+text {
+  font-family: Arial;
+  font-size: 15px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+
+.tick text {
+  fill: black;
+  font-size: 11px;
+}
+
+rect {
+  stroke: white;
+}
+
+/* Chart Styles  */
+#timeline path {
+  stroke: rgb(0, 0, 255);
+  stroke-width: 3;
+  fill: none;
+}
+#mapC #map{
+  transform: rotateX(180deg);
+  transform-origin: center center;
+}
