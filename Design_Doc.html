@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Design Documentation</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='main.js'></script>
+</head>
+
+<body>
+    <div>
+        
+        <h1><center>Design Documentation</center></h1><hr>
+
+        <h2>Design Process:</h2>
+        <p> After checking all the requirements for the project, I pinned some features and made a rough map of the design</p> 
+        <ul>
+            <li>Firstly, I thought of making 2 vizualizations. One animated and one static.</li>
+            <li>Secondly, I wanted to link the map to a graph which shows the death days.</li>
+        </ul>
+        <p> Some of my rough sketches are</p>
+        <img src="IMG_20211012_150732.jpg" width="400" , height="600">
+        <img src="IMG_20211012_151118.jpg" width="400" , height="600">
+        <hr>
+        <h2>Design Choices:</h2>
+        <ul>
+            <li>For the vizualizations,deaths_age_sex.csv was extracted into two .csv files. One Age.csv, which shows us the deaths based on respective age groups and the other Sex.csv, which shows us the deaths based on the respective genders.</li>
+            <li>I created a Pie chart to display the deaths based on gender. I selected the color blue for Males and Pink for females. I inserted the percentage as well as the number in the vizualization.</li>
+            <img src="Capture.jpg" width="500" ,height="500">
+
+            <li>I created an animated bar chart to display the deaths based on different age groups. I chose the "black" color for the bars, which will turn red when you hover on it. It will also display the number of deaths on top of each bar for the respective age groups. </li>
+             <img src="bar.png" width="500" ,height="500">
+            <li>I created a map of the Soho neighbourhood and added places like workhouse, brewery, soho square etc. I added few streets as well such as oxford street, regent street, ceorce street etc.</li>
+            <img src="Capture1.jpg" width="500" ,height="500">
+            <li>I created a timeline graph with three buttons: Total, Sex and Age. I have linked the timeline graph and the map. When we hover on the graph, the location where deaths happened starts accumulating on the map.</li>
+            <img src="Capture2.jpg" width="500" ,height="500">
+            <li>When the user click on Sex, I have created two buttons, one for male which is blue and the other for female which is pink. If we click on the buttons we can just see the male deaths or the female deaths.
+            </li>
+            <img src="Capture3.jpg" width="500" ,height="500">
+            <li>When the user clicks on Age, I have created 6 buttons for all the age groups and used a color gradient(Yellow-Red) for the colors of the buttons. We can see the deaths by different age groups if we select/deselect any buttons.</li>
+            <img src="Capture4.jpg" width="500" ,height="500">
+        </ul>
+        <hr>
+        <h2>Discovered Facts:</h2>
+        <ul>
+            <li>We can see that most of the deaths are for the age groups, 0-10 and >80. This can be because the young and the very old people have a low immunity and was not able to survive the epidemic.
+            </li>
+            <img src="Capture5.jpg" width=1000, height=500>
+            <li>We can see most of the deaths are around the pump between the workhouse and the brewery</li>
+            <li>The deaths are mostly in the center of the map and not around the other pumps in the top and south side of the city, which suggests that the contaminated water was near the brewery and workhouse area. </li>
+            <li>It can be possible that the people around the oxford street uses their own water bottles and got saved from the epidemic</li>
+                <img src="Capture1.jpg"  width="500" , height="500">
+        </ul>
+        <hr>
+        <h3>References:</h3>
+        <ul>
+            <li>https://stackoverflow.com/questions/46714759/append-circle-to-map-in-d3</li>
+            <li>https://d3js.org/</li>
+            <li>https://www.tutorialspoint.com/d3js/index.htm</li>
+            <li>https://www.youtube.com/watch?v=2LhoCfjm8R4</li>
+        </ul>
+    </div>
+
+</body>
+
+</html>
