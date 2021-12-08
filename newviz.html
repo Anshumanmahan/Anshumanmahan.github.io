@@ -394,8 +394,8 @@
                         return 3;
                     })
                     .attr("fill", function (d) {
-                        var l = parseInt(d.Age)
-                        return colors[l]
+                        if(d.Age == 0) { return "rbg(0 0 255)" }
+                        else { return "rgb(255 58 99)" }
                     })
                     .attr("id", "agedeaths")
                     .attr("stroke", "black")
@@ -483,9 +483,9 @@
                                 return 3;
                             })
                             .attr("fill", function (d) {
-                               var k = parseInt(d.Age)
-                                 return colors[l]
-                            })
+                        if(d.Age == 0) { return "rbg(0 0 255)" }
+                        else { return "rgb(255 58 99)" }
+                    })
                             .attr("id", "agedeaths")
                             .attr("stroke", "black")
                             .attr("stroke-width", 1)
