@@ -394,7 +394,8 @@
                         return 3;
                     })
                     .attr("fill", function (d) {
-                        return colors[d.Age]
+                        var l = parseInt(d.Age)
+                        return colors[l]
                     })
                     .attr("id", "agedeaths")
                     .attr("stroke", "black")
@@ -482,7 +483,8 @@
                                 return 3;
                             })
                             .attr("fill", function (d) {
-                                return colors[d.Age]
+                               var k = parseInt(d.Age)
+                                 return colors[l]
                             })
                             .attr("id", "agedeaths")
                             .attr("stroke", "black")
